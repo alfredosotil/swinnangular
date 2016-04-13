@@ -1,0 +1,111 @@
+<!--<mg-ajax path="/user" options="mgIndex">
+    <ul>
+        <li ng-repeat="item in index.model">
+            <span>{{item.names}}</span>
+            <span>{{item.email}}</span>
+            
+            <span>
+                <a ng-href="#/user/edit/{{item.id}}">Edit</a>
+                <a ng-href="#/user/delete/{{item.id}}">Delete</a>
+            </span>
+        </li>
+    </ul>
+</mg-ajax>-->
+<div>
+    <mg-ajax id="usersIndex" path="/user" options="jrPeopleIndex">
+        <md-content>
+            <md-toolbar class="filter md-theme-light">
+                <form ng-submit="index.filter.page = 0; index.accept();">
+                    <div layout="horizontal">
+                        <div flex>
+                            <h2>Lista de Usuarios</h2>
+                            <md-text-float id="search" label="Buscar:" ng-model="index.filter.searchStr" class="long"> </md-text-float>
+
+                            <span ng-show="index.cachedModel" style="color: red">Tiene cache</span>
+
+                        </div>
+                        <div layout="vertical" layout-align="center">
+                            <md-button class="md-button-raised md-button-colored" style="margin-right: 1em;" ng-click="angular.element('search').focus();" type="submit">Buscar!</md-button>
+                        </div>
+                    </div>
+                </form>
+            </md-toolbar>
+            <div class="md-whiteframe-z1">
+                <div id="list-header" layout="horizontal" layout-align="bottom">
+                    <div flex>
+                        <a ng-href="#/users/create"><md-button class="md-button-raised md-theme-light" mg-save-cache="#peopleIndex">Crear Nuevo Usuario</md-button></a>
+                    </div>
+                    <div layout="horizontal">
+                        <div layout="vertical">
+                            <div layout="horizontal">
+                                <md-button ng-click="index.filter.page = 0;index.accept();" ng-disabled="index.filter.page == 0" class="md-button-raised md-theme-green">Inicio</md-button>
+                                <md-button ng-click="index.previousPage();" ng-disabled="index.filter.page <= 0" class="md-button-raised md-theme-red">Anterior</md-button>
+                                <md-button ng-click="index.nextPage();" ng-disabled="index.model.length != index.filter.recordsPerPage" class="md-button-raised md-theme-light-blue">Siguiente</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <md-list>
+                    <md-list-item class="md-3-line" ng-repeat="item in index.model" ng-click="null">
+                        <div class="md-list-item-text" layout="column">
+                            <h3><strong>Nombres: </strong>{{ item.names}}</h3>
+                            <h3><strong>Apellidos: </strong>{{ item.surnames}}</h3>
+                            <h3><strong>Correo: </strong>{{ item.email}}</h3>
+                            <h3><strong>Usuario: </strong>{{ item.username}}</h3> 
+<!--                            <a class="waves-effect waves-light btn-large" ng-href="#/user/edit/{{item.id}}">Edit<i class="mdi-editor-border-color right"></i></a>
+                            <a class="waves-effect waves-red btn-large" ng-href="#/user/delete/{{item.id}}">Delete<i class="mdi-content-clear right"></i></a>-->
+                        </div>
+                        <div class="md-list" layout="column">
+                            <a class="btn-floating waves-effect waves-light yellow darken-4" ng-href="#/users/edit/{{item.id}}">
+                                <i class="large material-icons">mode_edit</i>
+                            </a>
+                            <a class="btn-floating waves-effect waves-light red darken-4" ng-href="#/users/delete/{{item.id}}">
+                                <i class="large material-icons">delete</i>
+                            </a>
+                        </div>
+                    </md-list-item>
+
+
+                    <!--                    <md-item >
+                    
+                                            <md-item-content>
+                                                <md-card flex>
+                                                    <div layout="vertical">
+                                                        <div layout="horizontal">
+                                                            <div flex>{{item.names}}</div>
+                                                            <div>{{item.email}}</div>
+                                                        </div>
+                                                        <div layout="horizontal">
+                                                                                                    <span flex>{{item.company}}</span>
+                                                            <span>
+                    
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </md-card>
+                                            </md-item-content>
+                    
+                                        </md-item>-->
+                </md-list>
+                <div id="list-bottom" layout="horizontal" layout-align="bottom">
+                    <div>
+                        <md-card>
+                            <div>Current page: {{index.filter.page + 1}}</div>
+                        </md-card>
+                    </div>
+                    <div flex>
+                    </div>
+                    <div layout="horizontal">
+                        <div layout="vertical">
+                            <div layout="horizontal">
+                                <md-button ng-click="index.filter.page = 0;index.accept();" ng-disabled="index.filter.page == 0" class="md-button-raised md-theme-green">First page</md-button>
+                                <md-button ng-click="index.previousPage();" ng-disabled="index.filter.page <= 0" class="md-button-raised md-theme-red">Prior page</md-button>
+                                <md-button ng-click="index.nextPage();" ng-disabled="index.model.length != index.filter.recordsPerPage" class="md-button-raised md-theme-light-blue">Next page</md-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </mg-ajax>
+</div>
