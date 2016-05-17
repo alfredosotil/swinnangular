@@ -1,7 +1,7 @@
 'use strict';
 
-describe('myApp.version module', function() {
-  beforeEach(module('myApp.version'));
+describe('swinn-angular-app.version module', function() {
+  beforeEach(module('swinn-angular-app.version'));
 
   describe('interpolate filter', function() {
     beforeEach(module(function($provide) {

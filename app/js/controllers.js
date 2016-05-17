@@ -5,7 +5,7 @@
  */
 'use strict';
 
-angular.module('myApp.controllers', [])
+angular.module('swinn-angular-app.controllers', [])
 //        .controller('CustomersCtrl', ["$scope", "Customer", function (s, c) {
 //                s.pageClass = 'page-home';
 //                s.allCustomers = c.findAll();

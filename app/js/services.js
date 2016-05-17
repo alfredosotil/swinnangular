@@ -6,7 +6,7 @@
 
 'use strict';
 
-var customerService = angular.module('myApp.services', ['ngResource']);
+var customerService = angular.module('swinn-angular-app.services', ['ngResource']);
 
 customerService.factory('Customer', function($resource){
     return $resource('http://localhost:8080/restfulbackend/wr/customers',{},{

@@ -1,24 +1,42 @@
-<!--<mg-ajax path="/user" options="mgIndex">
+<mg-ajax path="/user" options="mgIndex" ng-init="index.filter={page:0,recordsPerPage:1}">
+    <div>
+        <h2>Lista de Usuarios</h2>
+        <input type="text" ng-model="index.filter.searchStr"/>
+        <button ng-click="index.filter.page=0; index.accept();">
+            Search!
+        </button>
+    </div>
     <ul>
         <li ng-repeat="item in index.model">
             <span>{{item.names}}</span>
             <span>{{item.email}}</span>
             
             <span>
-                <a ng-href="#/user/edit/{{item.id}}">Edit</a>
-                <a ng-href="#/user/delete/{{item.id}}">Delete</a>
+                <a ng-href="#/user/edit/{{item.id}}">Editar</a>
+                <a ng-href="#/user/delete/{{item.id}}">Borrar</a>
             </span>
         </li>
     </ul>
-</mg-ajax>-->
-<div>
+    <div>Current page: {{index.filter.page + 1}}</div>
+    <div>
+        <button ng-click="index.filter.page=0;index.accept();" ng-disabled="index.filter.page==0">1ra Pagina</button>
+        <button ng-click="index.previousPage();" ng-disabled="index.filter.page <= 0" >Anterior</button>
+        <button ng-click="index.nextPage();" ng-disabled="index.model.length != index.filter.recordsPerPage">Siguiente</button>
+    </div>
+</mg-ajax>
+
+<!--<div>
     <mg-ajax id="usersIndex" path="/user" options="jrPeopleIndex">
         <md-content>
-            <md-toolbar class="filter md-theme-light">
+            <md-toolbar class="filter">
                 <form ng-submit="index.filter.page = 0; index.accept();">
                     <div layout="horizontal">
                         <div flex>
                             <h2>Lista de Usuarios</h2>
+                            <md-input-container class="md-block">
+                                <label>Buscar:</label>
+                                <input ng-model="index.filter.searchStr">
+                            </md-input-container>
                             <md-text-float id="search" label="Buscar:" ng-model="index.filter.searchStr" class="long"> </md-text-float>
 
                             <span ng-show="index.cachedModel" style="color: red">Tiene cache</span>
@@ -52,8 +70,8 @@
                             <h3><strong>Apellidos: </strong>{{ item.surnames}}</h3>
                             <h3><strong>Correo: </strong>{{ item.email}}</h3>
                             <h3><strong>Usuario: </strong>{{ item.username}}</h3> 
-<!--                            <a class="waves-effect waves-light btn-large" ng-href="#/user/edit/{{item.id}}">Edit<i class="mdi-editor-border-color right"></i></a>
-                            <a class="waves-effect waves-red btn-large" ng-href="#/user/delete/{{item.id}}">Delete<i class="mdi-content-clear right"></i></a>-->
+                                                        <a class="waves-effect waves-light btn-large" ng-href="#/user/edit/{{item.id}}">Edit<i class="mdi-editor-border-color right"></i></a>
+                                                        <a class="waves-effect waves-red btn-large" ng-href="#/user/delete/{{item.id}}">Delete<i class="mdi-content-clear right"></i></a>
                         </div>
                         <div class="md-list" layout="column">
                             <a class="btn-floating waves-effect waves-light yellow darken-4" ng-href="#/users/edit/{{item.id}}">
@@ -66,7 +84,7 @@
                     </md-list-item>
 
 
-                    <!--                    <md-item >
+                                        <md-item >
                     
                                             <md-item-content>
                                                 <md-card flex>
@@ -85,7 +103,7 @@
                                                 </md-card>
                                             </md-item-content>
                     
-                                        </md-item>-->
+                                        </md-item>
                 </md-list>
                 <div id="list-bottom" layout="horizontal" layout-align="bottom">
                     <div>
@@ -108,4 +126,4 @@
             </div>
         </md-content>
     </mg-ajax>
-</div>
+</div>-->
