@@ -13,6 +13,7 @@ angular.module('swinn-angular-app', [
     'ngAnimate',
     'mgCrud',
     'ngMaterial',
+    'md.data.table',
     'swinn-angular-app.filters',
     'swinn-angular-app.services',
     'swinn-angular-app.directives',
@@ -22,15 +23,30 @@ angular.module('swinn-angular-app', [
         .config(function (mgHttpProvider) {
             mgHttpProvider.setDefaultConfig({url: 'http://localhost/swinnapi/web'});
         })
+        .config(function ($mdThemingProvider) {
+            $mdThemingProvider.theme('default')
+//                    .primaryPalette('pink', {
+//                        'default': '400', // by default use shade 400 from the pink palette for primary intentions
+//                        'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+//                        'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+//                        'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+//                    })
+//                    // If you specify less than all of the keys, it will inherit from the
+//                    // default shades
+//                    .accentPalette('purple', {
+//                        'default': '200' // use shade 200 for default, and keep all other shades the same
+//                    })
+//                    .dark();
+        })
         .config(['$routeProvider', function ($routeProvider) {
                 $routeProvider
                         .when('/', {templateUrl: 'views/site/index.html', controller: 'SiteCtrl'})
                         .when('/index', {templateUrl: 'views/site/index.html', controller: 'SiteCtrl'})
 //                        users
-                        .when('/users', {templateUrl: 'views/users/list.html', controller: 'UsersCtrl'})
-                        .when('/users/edit/:id', {templateUrl: 'views/users/edit.html', controller: 'UsersCtrl'})
-                        .when('/users/create', {templateUrl: 'views/users/create.html', controller: 'UsersCtrl'})
-                        .when('/users/delete/:id', {templateUrl: 'views/users/delete.html', controller: 'UsersCtrl'})
+                        .when('/user', {templateUrl: 'views/user/list.html', controller: 'UsersCtrl'})
+                        .when('/user/edit/:id', {templateUrl: 'views/user/edit.html', controller: 'UsersCtrl'})
+                        .when('/user/create', {templateUrl: 'views/user/create.html', controller: 'UsersCtrl'})
+                        .when('/user/delete/:id', {templateUrl: 'views/user/delete.html', controller: 'UsersCtrl'})
 //                        .when('/customers', {
 //                            templateUrl: 'views/customers/index.html',
 //                            controller: 'CustomersCtrl'
