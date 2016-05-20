@@ -13,7 +13,7 @@ angular.module('swinn-angular-app', [
     'ngAnimate',
     'mgCrud',
     'ngMaterial',
-    'md.data.table',
+//    'md.data.table',
     'swinn-angular-app.filters',
     'swinn-angular-app.services',
     'swinn-angular-app.directives',
@@ -21,7 +21,8 @@ angular.module('swinn-angular-app', [
     'swinn-angular-app.version'
 ])
         .config(function (mgHttpProvider) {
-            mgHttpProvider.setDefaultConfig({url: 'http://localhost/swinnapi/web'});
+//            mgHttpProvider.setDefaultConfig({url: 'http://localhost/swinnapi/web'});
+            mgHttpProvider.setDefaultConfig({url: 'http://localhost:8080/swinnrestfulapi/wr'});
         })
         .config(function ($mdThemingProvider) {
             $mdThemingProvider.theme('default')
